@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listado de Usuarios</title>
+  
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+​
+  <div class="container mt-5">
+    <h1 th:text="${titulo}"></h1>
+    
+  </div>
+  <div class=container>
+	<a class="btn btn-success my-3" href="/usuarios/crear"><i class="fa-solid fa-plus mx-2"></i>Nuevo Usuario</a>
+  	<section>
+  		<table class=table>
+  			<thead>
+  				<tr>
+  					<th scope="col">ID</th>
+  					<th scope="col">RUN</th>
+  					<th scope="col">Nombre Completo</th>
+  					<th scope="col">Fecha Nacimiento</th>
+  					<th scope="col">Telefono</th>
+  					<th scope="col">AFP</th>
+  					<th scope="col">Sistema De Salud</th>
+  					<th scope="col">Direccion</th>
+  					<th scope="col">Comuna</th>
+  					<th scope="col">Titulo</th>
+  					<th scope="col">Fecha Ingreso</th>
+  					<th scope="col">Area</th>
+  					<th scope="col">Experiencia Previa</th>
+  					<th scope="col">Tipo Usuario</th>
+  					<th scope="col">Acciones</th>
+  				</tr>
+  			</thead>
+  			<tbody class="table-group-divider">
+  				<tr th:each="cl:${usuarios}">
+  					<th scope="row" th:text="${cl.id}"></th>
+  					<td th:text="${cl.run}"></td>
+  					<td th:text="${cl.nombreCompleto}"></td>
+  					<td th:text="${cl.fechaNacimiento}"></td>
+  					<td th:text="${cl.telefono}"></td>
+  					<td th:text="${cl.afp}"></td>
+  					<td th:text="${cl.sistemaSalud}"></td>
+  					<td th:text="${cl.direccion}"></td>
+  					<td th:text="${cl.comuna}"></td>
+  					<td th:text="${cl.titulo}"></td>
+  					<td th:text="${cl.fechaIngreso}"></td>
+  					<td th:text="${cl.area}"></td>
+  					<td th:text="${cl.experiencia}"></td>
+  					<td th:text="${cl.tipoUsuario}"></td>
+  					<td>
+  					 	<a th:href="@{/usuarios/editar/}+${cl.id}" class="btn btn-warning"><i class="fa-solid fa-user-pen"></i></a>
+						<a th:href="@{/usuarios/eliminar/}+${cl.id}" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>	 
+  					</td>
+  				</tr>	
+  			
+  			</tbody>		
+  		</table>
+  	</section>
+  
+  
+  </div>
+  <footer th:replace="plantilla/template :: footer"></footer>
+</body>
+
+</html>

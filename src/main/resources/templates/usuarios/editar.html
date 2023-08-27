@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Capacitacion</title>
+    
+	<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+	<div class="container my-3">
+		<h1 th:text="${titulo}"></h1>
+	</div>
+    <div class="container col-lg-8 col-md-10 col-sm-12">
+   		<form th:action="@{/usuarios/editar}" id="form" method="post" onsubmit="return validarFormulario()">
+            <div class="usuario">
+				<div class="form-group" hidden >
+                	<label for="id">Id Usuario: </label>
+                	<input type="text"  class="form-control" name="id" th:value="${usuario.id}"/>
+				</div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Run</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="run" th:value="${usuario.run}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="nombreCompleto" th:value="${usuario.nombreCompleto}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Fecha Nacimiento</label>
+                    <input type="date" class="form-control" id="exampleFormControlInput1" name="fechaNacimiento" th:value="${usuario.fechaNacimiento}">
+                </div>
+                <label for="opciones">Tipo de Usuario:</label>
+                <select id="opciones" onchange="mostrarCampos()" class="form-select" name="tipoUsuario" aria-label="Default select example" th:value="${usuario.tipoUsuario}">
+                    <option value="" selected>Seleccione el tipo de Usuario</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="profesional">Profesional</option>
+                    <option value="administrativo">Administrativo</option>
+                </select>
+            </div>
+                <div id="cliente" class="campo mt-3" style="display: none">
+                    <label for="campo1_input1">Telefono:</label>
+                    <input type="text" id="telefono" name="telefono" class="form-control" th:value="${usuario.telefono}"/>
+                    <label class="mt-2" for="campo1_input2">Direccion:</label>
+                    <input type="text" id="direccion" name="direccion" class="form-control" th:value="${usuario.direccion}"/>
+                    <label for="campo2_input" class="mt-2">Comuna:</label>
+                    <input type="text" id="comuna"  name="comuna" class="form-control mb-2" th:value="${usuario.comuna}"/>
+                    <label for="campo2_input" class="mt-2"></label>Sistema de Salud:</label>
+                    <select class="form-select mt-2" id="sistema" name="sistemaSalud" aria-label="Default select example" th:value="${usuario.sistemaSalud}">
+                        <option selected>Selecciona Sistema de Salud</option>
+                        <option value="1">FONASA</option>
+                        <option value="2">ISAPRE</option>    
+                    </select>
+                    <label for="campo2_input" class="mt-2">AFP:</label>
+                    <select class="form-select" id="afp" name="afp" aria-label="Default select example" th:value="${usuario.afp}">
+                        <option selected>Elige Una Opcion</option>
+                        <option value="1">AFP CAPITAL</option>
+                        <option value="2">AFP HABITAT</option>
+                        <option value="3">AFP CUPRUM</option>
+                        <option value="4">AFP MODELO</option>
+                        <option value="5">AFP PLANVITAL</option>
+                        <option value="6">AFP PROVIDA</option>
+                      </select>
+                </div>
+              <div class="profesional mt-3">
+                <div id="profesional" class="campo" style="display: none">
+                    <label for="campo3_input1">Titulo:</label>
+                    <input type="text" id="titulo" name="titulo" class="form-control" th:value="${usuario.titulo}"/>
+                    <label for="campo3_input2" class="mt-2">Fecha de Ingreso:</label>
+                    <input type="date" id="ingreso" name="fechaIngreso" class="form-control" th:value="${usuario.fechaIngreso}"/>
+                  </div>
+              </div>
+              
+              <div class="administrativo mt-3">
+                <div id="administrativo" class="campo" style="display: none">
+                    <label for="campo6_input1">Area:</label>
+                    <input type="text" id="area" name="area" class="form-control" th:value="${usuario.area}"/>
+                    <label for="campo6_input2" class="mt-2">Experiencia Previa:</label>
+                    <input type="text" id="experiencia" name="experiencia" class="form-control" th:value="${usuario.experiencia}"/>
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-success mt-3" id="boton" style="display: none" >
+				  <i class="fa-regular fa-floppy-disk mx-2"></i>Registrar</button>
+        </form>
+  	</div>
+ <footer th:replace="plantilla/template :: footer"></footer>
+ 
+<script src="/js/script.js"></script>
+</body>
+</html>

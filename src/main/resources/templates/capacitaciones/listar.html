@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container my-3">
+		<h1 th:text="${titulo}"></h1>
+	</div>
+
+	<div class="container col-lg-8">
+		<a class="btn btn-success my-3" href="/capacitaciones/crear"><i class="fa-solid fa-plus mx-2"></i>Nueva Capacitacion</a>
+		<table class="table">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Rut</th>
+					<th scope="col">Dia</th>
+					<th scope="col">Hora</th>
+					<th scope="col">Lugar</th>
+					<th scope="col">Cantidad</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+				<tr th:each="cl:${capacitaciones}">
+					<th scope="row" th:text="${cl.id}"></th>
+					<td th:text="${cl.rut}"></td>
+					<td th:text="${cl.dia}"></td>
+					<td th:text="${cl.hora}"></td>
+					<td th:text="${cl.lugar}"></td>
+					<td th:text="${cl.cantidad}"></td>
+					
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+
+</html>
